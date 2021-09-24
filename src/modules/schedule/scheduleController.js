@@ -47,6 +47,9 @@ module.exports = {
       if (result.length < 1) {
         return helperWrapper.response(res, 400, `Data Tidak Ditemukan`, null);
       }
+      result.forEach((element, index) => {
+        result[index].time = element.time.split(",");
+      });
       return helperWrapper.response(
         res,
         200,
@@ -67,6 +70,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const result = await scheduleModel.getScheduleById(id);
+      result[0].time = result[0].time.split(",");
       if (result.length < 1) {
         return helperWrapper.response(
           res,
@@ -90,6 +94,7 @@ module.exports = {
       const { movieID, premier, price, location, dateStart, dateEnd, time } =
         req.body;
       let isNull;
+
       const setData = {
         movieID,
         premier,
@@ -148,6 +153,7 @@ module.exports = {
         time,
         updatedAt: new Date(Date.now()),
       };
+
       Object.keys(setData).forEach((el) => {
         if (setData[el] == null) {
           delete setData[el];

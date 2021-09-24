@@ -18,5 +18,11 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "no-restricted-syntax": [
+      "error",
+      "FunctionExpression",
+      "WithStatement",
+      "BinaryExpression[operator='in']",
+    ],
   },
 };
