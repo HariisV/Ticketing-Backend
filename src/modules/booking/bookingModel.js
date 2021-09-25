@@ -32,6 +32,16 @@ OR booking.userId = ${idUser}`,
         }
       );
     }),
+  getBookingById: (id) =>
+    new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM booking WHERE id = ${id}`, (err, res) => {
+        if (err) {
+          reject(new Error(`SQL : ${err.sqlMessage}`));
+        } else {
+          resolve(res);
+        }
+      });
+    }),
   getPriceBySchedule: (id) =>
     new Promise((resolve, reject) => {
       connection.query(
@@ -40,7 +50,7 @@ OR booking.userId = ${idUser}`,
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));
           } else {
-            resolve(res[0].price);
+            resolve(res);
           }
         }
       );
@@ -68,6 +78,24 @@ OR booking.userId = ${idUser}`,
         }
       });
     }),
+  updateBooking: (data, id) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        "UPDATE booking SET ? WHERE id = ?",
+        [data, id],
+        (err) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            const newRes = {
+              id,
+              ...data,
+            };
+            resolve(newRes);
+          }
+        }
+      );
+    }),
   postBookingSeat: (data) =>
     new Promise((resolve, reject) => {
       connection.query("INSERT INTO seatbooking SET ?", data, (err, res) => {
@@ -77,5 +105,31 @@ OR booking.userId = ${idUser}`,
           resolve(res.insertId);
         }
       });
+    }),
+  deletedBookingWithSeat: (idBooking) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        `DELETE FROM booking WHERE id = ${idBooking}`,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res);
+          }
+        }
+      );
+    }),
+  deletedBookingSeat: (deletedSeat) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        `DELETE FROM seatbooking WHERE bookingId = ${deletedSeat}`,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res);
+          }
+        }
+      );
     }),
 };

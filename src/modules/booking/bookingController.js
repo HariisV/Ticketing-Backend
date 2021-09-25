@@ -113,6 +113,14 @@ module.exports = {
         seat,
       } = req.body;
       const cekPrice = await bookingModel.getPriceBySchedule(scheduleId);
+      if (cekPrice.length < 1) {
+        return helperWrapper.response(
+          res,
+          400,
+          `ScheduleId: ${scheduleId} Tidak Ditemukan`,
+          null
+        );
+      }
       const setDataBooking = {
         invoice: `INV-${
           Math.floor(Math.random() * (9000 - 1000 + 1)) + 1000
@@ -126,11 +134,12 @@ module.exports = {
         dateBooking,
         timeBooking,
         totalTicket: seat.length,
-        totalPayment: cekPrice * seat.length,
+        totalPayment: cekPrice[0].price * seat.length,
         paymentMethod,
         statusPayment,
         createdAt: new Date(Date.now()),
       };
+
       const postBooking = await bookingModel.postBooking(setDataBooking);
       await seat.forEach((element) => {
         const setDataBookingSeat = {
@@ -150,6 +159,125 @@ module.exports = {
         200,
         "success Created Data",
         setDataBooking
+      );
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `bad Request : ${error.message}`,
+        null
+      );
+    }
+  },
+  updateBooking: async (req, res) => {
+    try {
+      const { id } = req.params;
+      let result;
+      const {
+        userId,
+        scheduleId,
+        movieId,
+        fullName,
+        Email,
+        phoneNumber,
+        dateBooking,
+        timeBooking,
+        paymentMethod,
+        statusPayment,
+        seat,
+      } = req.body;
+      const notNull = await bookingModel.getBookingById(id);
+      if (notNull.length < 1) {
+        return helperWrapper.response(
+          res,
+          400,
+          `Tidak Ditemukan Booking Dengan Id ${id}`,
+          null
+        );
+      }
+      const setDataDefault = {
+        userId,
+        movieId,
+        scheduleId,
+        fullName,
+        Email,
+        phoneNumber,
+        dateBooking,
+        timeBooking,
+        paymentMethod,
+        statusPayment,
+        updatedAt: new Date(Date.now()),
+      };
+      if (seat != null) {
+        const cekPrice = await bookingModel.getPriceBySchedule(scheduleId);
+        if (cekPrice.length < 1) {
+          return helperWrapper.response(
+            res,
+            400,
+            `ScheduleId: ${scheduleId} Tidak Ditemukan`,
+            null
+          );
+        }
+        const setDataSeat = {
+          ...setDataDefault,
+          totalTicket: seat.length,
+          totalPayment: cekPrice[0].price * seat.length,
+        };
+
+        await bookingModel.deletedBookingSeat(id);
+        await seat.forEach((element) => {
+          const setDataBookingSeat = {
+            bookingId: id,
+            scheduleId,
+            movieId,
+            dateSchedule: dateBooking,
+            timeSchedule: timeBooking,
+            seat: element,
+            updatedAt: new Date(Date.now()),
+          };
+          bookingModel.postBookingSeat(setDataBookingSeat);
+        });
+        result = await bookingModel.updateBooking(setDataSeat, id);
+      } else {
+        result = await bookingModel.updateBooking(setDataDefault, id);
+      }
+
+      return helperWrapper.response(
+        res,
+        200,
+        "Success, Data Hasbeen Change",
+        result
+      );
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `bad Request : ${error.message}`,
+        null
+      );
+    }
+  },
+  deleteBookingWithSeat: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const notNull = await bookingModel.getBookingById(id);
+      if (notNull.length < 1) {
+        return helperWrapper.response(
+          res,
+          400,
+          `Tidak Ditemukan Booking Dengan Id ${id}`,
+          null
+        );
+      }
+      await bookingModel.deletedBookingWithSeat(id);
+      await bookingModel.deletedBookingSeat(id);
+
+      return helperWrapper.response(
+        res,
+        200,
+        `Success, Deleted Data With Id = ${id}`,
+        null
       );
     } catch (error) {
       return helperWrapper.response(
