@@ -45,7 +45,7 @@ module.exports = {
         );
       }
       if (result.length < 1) {
-        return helperWrapper.response(res, 400, `Data Tidak Ditemukan`, null);
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
       }
       result.forEach((element, index) => {
         result[index].time = element.time.split(",");
@@ -74,7 +74,7 @@ module.exports = {
       if (result.length < 1) {
         return helperWrapper.response(
           res,
-          400,
+          404,
           `Data Dengan ID ${id} Tidak Ditemukan`,
           null
         );
@@ -135,7 +135,7 @@ module.exports = {
       if (check.length < 1) {
         return helperWrapper.response(
           res,
-          400,
+          404,
           `Data Dengan ID ${id} Tidak Ditemukan`,
           null
         );
@@ -183,7 +183,7 @@ module.exports = {
       if (check.length < 1) {
         return helperWrapper.response(
           res,
-          400,
+          404,
           `Data Dengan ID ${id} Tidak Ditemukan`,
           null
         );

@@ -8,7 +8,7 @@ module.exports = {
       let { idBooking, idUser } = req.query;
       idBooking = idBooking || "0";
       idUser = idUser || "0";
-      if (idBooking === 0 && idUser === 0) {
+      if (idBooking !== "0" && idUser !== "0") {
         return helperWrapper.response(
           res,
           400,
@@ -61,7 +61,7 @@ module.exports = {
           tampungResult
         );
       }
-      return helperWrapper.response(res, 400, `Data Tidak Ditemukan`, null);
+      return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
     } catch (error) {
       return helperWrapper.response(
         res,
@@ -73,11 +73,15 @@ module.exports = {
   },
   getAllBookingSeat: async (req, res) => {
     try {
-      let { idSchedule, idMovie, dateSchedule, timeSchedule } = req.query;
-      idSchedule = idSchedule || "0";
-      idMovie = idMovie || "0";
-      dateSchedule = dateSchedule || "0";
-      timeSchedule = timeSchedule || "0";
+      const { idSchedule, idMovie, dateSchedule, timeSchedule } = req.query;
+      if (!idSchedule || !idMovie || !dateSchedule || !timeSchedule) {
+        return helperWrapper.response(
+          res,
+          400,
+          `Error,Semua Field harus Diisi`,
+          null
+        );
+      }
       const getData = await bookingModel.getAllBookingSeat(
         idSchedule,
         idMovie,
@@ -85,7 +89,7 @@ module.exports = {
         timeSchedule
       );
       if (getData < 1) {
-        return helperWrapper.response(res, 400, `Data Tidak Ditemukan`, null);
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
       }
       return helperWrapper.response(res, 200, "success Get Data", getData);
     } catch (error) {
@@ -116,12 +120,12 @@ module.exports = {
       if (cekPrice.length < 1) {
         return helperWrapper.response(
           res,
-          400,
+          404,
           `ScheduleId: ${scheduleId} Tidak Ditemukan`,
           null
         );
       }
-      const setDataBooking = {
+      let setDataBooking = {
         invoice: `INV-${
           Math.floor(Math.random() * (9000 - 1000 + 1)) + 1000
         }-${new Date().getDate()}-${new Date().getMonth()}`,
@@ -153,7 +157,7 @@ module.exports = {
         };
         bookingModel.postBookingSeat(setDataBookingSeat);
       });
-
+      setDataBooking = { id: postBooking, ...setDataBooking, seat };
       return helperWrapper.response(
         res,
         200,
@@ -208,12 +212,17 @@ module.exports = {
         statusPayment,
         updatedAt: new Date(Date.now()),
       };
+      Object.keys(setDataDefault).forEach((element) => {
+        if (!setDataDefault[element]) {
+          delete setDataDefault[element];
+        }
+      });
       if (seat != null) {
         const cekPrice = await bookingModel.getPriceBySchedule(scheduleId);
         if (cekPrice.length < 1) {
           return helperWrapper.response(
             res,
-            400,
+            404,
             `ScheduleId: ${scheduleId} Tidak Ditemukan`,
             null
           );
@@ -238,6 +247,7 @@ module.exports = {
           bookingModel.postBookingSeat(setDataBookingSeat);
         });
         result = await bookingModel.updateBooking(setDataSeat, id);
+        result = { ...result, seat };
       } else {
         result = await bookingModel.updateBooking(setDataDefault, id);
       }
@@ -245,7 +255,7 @@ module.exports = {
       return helperWrapper.response(
         res,
         200,
-        "Success, Data Hasbeen Change",
+        `Success, Data With Id: ${id} Hasbeen Change`,
         result
       );
     } catch (error) {
@@ -265,7 +275,7 @@ module.exports = {
       if (notNull.length < 1) {
         return helperWrapper.response(
           res,
-          400,
+          404,
           `Tidak Ditemukan Booking Dengan Id ${id}`,
           null
         );

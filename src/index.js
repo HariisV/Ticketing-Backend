@@ -26,11 +26,6 @@ app.use("/*", (request, response) => {
   response.status(404).send("Path Not Found !");
 });
 
-// app.get("/", (req, res) => {
-//   res.status(200);
-//   res.send("Hallo World s!");
-// });
-
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Express App Listen On Port : ${port}`);

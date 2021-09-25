@@ -18,8 +18,6 @@ module.exports = {
   getMovieById: (id) =>
     new Promise((resolve, reject) => {
       connection.query("SELECT * FROM Movie WHERE id = ?", id, (err, res) => {
-        // eslint-disable-next-line no-console
-        // console.log(err, res);
         if (err) {
           reject(new Error(`SQL : ${err.sqlMessage}`));
         } else {

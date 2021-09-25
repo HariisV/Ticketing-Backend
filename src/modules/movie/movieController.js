@@ -36,7 +36,7 @@ module.exports = {
         );
       }
       if (result.length < 1) {
-        return helperWrapper.response(res, 400, `Data Tidak Ditemukan`, null);
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
       }
 
       return helperWrapper.response(
@@ -106,7 +106,7 @@ module.exports = {
       if (isNull) {
         return helperWrapper.response(
           res,
-          405,
+          400,
           `${isNull} tidak boleh kosong`,
           null
         );
@@ -116,7 +116,7 @@ module.exports = {
     } catch (error) {
       return helperWrapper.response(
         res,
-        405,
+        400,
         `bad Request : ${error.message}`,
         null
       );
@@ -129,8 +129,8 @@ module.exports = {
       if (checkId.length < 1) {
         return helperWrapper.response(
           res,
-          200,
-          `dataById ${id} Not Found`,
+          404,
+          `Data Dengan Id : ${id} Not Found`,
           null
         );
       }
@@ -181,7 +181,6 @@ module.exports = {
           null
         );
       }
-      // console.log(id);
       const result = await movieModel.deleteMovie(id);
       return helperWrapper.response(res, 200, `Succes Deleted ${id}`, result);
     } catch (error) {
