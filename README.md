@@ -123,7 +123,7 @@ The [MIT License]() (MIT)
 ### All Demos
 Choose from any of the [default themes](#themes)
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=radical)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=HariisV&show_icons=true&theme=radical)
 
 - Gradient
 ```
