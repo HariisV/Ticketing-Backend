@@ -112,7 +112,7 @@ $ npm run dev
 - [x] JWT
 - [x] Midtrans 
 - [x] Node Mailler 
-- [ ] Export PDF 
+- [x] Export PDF 
 
 </details>
 
