@@ -33,7 +33,7 @@ module.exports = {
       connection.query(
         "SELECT COUNT(*) As total FROM schedule WHERE movieID Like ? AND location Like ?",
         [movieID, location],
-        (err, res) => {
+        (err, res) => { 
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));
           } else {

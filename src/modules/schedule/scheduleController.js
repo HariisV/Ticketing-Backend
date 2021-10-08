@@ -1,5 +1,6 @@
 const scheduleModel = require("./scheduleModel");
 const helperWrapper = require("../../helpers/wrapper");
+const redis = require("../../config/redis");
 
 module.exports = {
   getAllSchedule: async (req, res) => {
@@ -22,6 +23,7 @@ module.exports = {
           null
         );
       }
+
       const result = await scheduleModel.getAllSchedule(
         limit,
         offset,
@@ -30,12 +32,17 @@ module.exports = {
         sort,
         sortType
       );
+
       const pageInfo = {
         page,
         totalPage,
         limit,
         totalData,
       };
+
+      if (result.length < 1) {
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
+      }
       if (page > totalPage) {
         return helperWrapper.response(
           res,
@@ -44,12 +51,15 @@ module.exports = {
           null
         );
       }
-      if (result.length < 1) {
-        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
-      }
       result.forEach((element, index) => {
         result[index].time = element.time.split(",");
       });
+      redis.setex(
+        `getSchedule:${JSON.stringify(req.query)}`,
+        3600,
+        JSON.stringify({ result, pageInfo })
+      );
+
       return helperWrapper.response(
         res,
         200,
@@ -79,6 +89,7 @@ module.exports = {
           null
         );
       }
+      redis.setex(`getSchedule:${id}`, 3600, JSON.stringify(result));
       return helperWrapper.response(res, 200, "success Get Data", result);
     } catch (error) {
       return helperWrapper.response(

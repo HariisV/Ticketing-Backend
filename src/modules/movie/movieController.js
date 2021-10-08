@@ -1,6 +1,8 @@
 /* eslint-disable prefer-const */
 const movieModel = require("./movieModel");
 const helperWrapper = require("../../helpers/wrapper");
+const deleteFile = require("../../helpers/delete");
+const redis = require("../../config/redis");
 
 module.exports = {
   getAllMovie: async (req, res) => {
@@ -27,6 +29,9 @@ module.exports = {
         sort,
         sortType
       );
+      if (result.length < 1) {
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
+      }
       if (page > totalPage) {
         return helperWrapper.response(
           res,
@@ -35,9 +40,11 @@ module.exports = {
           null
         );
       }
-      if (result.length < 1) {
-        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
-      }
+      redis.setex(
+        `getMovie:${JSON.stringify(req.query)}`,
+        3600,
+        JSON.stringify({ result, pageInfo })
+      );
 
       return helperWrapper.response(
         res,
@@ -67,6 +74,8 @@ module.exports = {
           null
         );
       }
+      redis.setex(`getMovie:${id}`, 3600, JSON.stringify(result));
+
       return helperWrapper.response(res, 200, "success Get Data", result);
     } catch (error) {
       return helperWrapper.response(
@@ -97,6 +106,7 @@ module.exports = {
         cast,
         director,
         duration,
+        image: req.file ? req.file.filename : null,
       };
       Object.keys(setData).forEach((element) => {
         if (!setData[element]) {
@@ -158,8 +168,12 @@ module.exports = {
           delete setData[element];
         }
       });
+      if (req.file && checkId[0].image) {
+        setData.image = req.file.filename;
+        deleteFile(`public/uploads/movie/${checkId[0].image}`);
+      }
       const result = await movieModel.updateMovie(setData, id);
-      return helperWrapper.response(res, 200, "Successupdate Data", result);
+      return helperWrapper.response(res, 200, "Success Update Data", result);
     } catch (error) {
       return helperWrapper.response(
         res,
@@ -181,8 +195,16 @@ module.exports = {
           null
         );
       }
+      if (checkId[0].image) {
+        deleteFile(`public/uploads/movie/${checkId[0].image}`);
+      }
       const result = await movieModel.deleteMovie(id);
-      return helperWrapper.response(res, 200, `Succes Deleted ${id}`, result);
+      return helperWrapper.response(
+        res,
+        200,
+        `Succes Deleted Movie Where Id: ${id}`,
+        result
+      );
     } catch (error) {
       return helperWrapper.response(
         res,

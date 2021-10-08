@@ -1,4 +1,4 @@
-<img src="https://i.postimg.cc/yYBp90yX/Tickitz-1.png" align="right" />
+<img src="icon.png" align="right" />
 
 # TickEz - Booking Your Movie [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
 > Cara Mudah Booking Film
@@ -112,7 +112,7 @@ $ npm run dev
 - [x] JWT
 - [x] Midtrans 
 - [x] Node Mailler 
-- [x] Export PDF 
+- [ ] Export PDF 
 
 </details>
 

@@ -14,7 +14,7 @@ connection.connect((error) => {
   }
 
   // eslint-disable-next-line no-console
-  console.log(`You're now Connect`);
+  console.log(`You're now Connect To MYsql`);
 });
 
 module.exports = connection;
