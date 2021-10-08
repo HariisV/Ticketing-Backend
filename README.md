@@ -125,6 +125,3 @@ The [MIT License]() (MIT)
 - [@HariisV](https://github.com/HariisV)
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=HariisV&show_icons=true&theme=radical)
-
-- Gradient
-```
