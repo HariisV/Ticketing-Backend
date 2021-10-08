@@ -1,0 +1,20 @@
+============PROCESS==============
+NODE MAILLER = SEND EMAIL WHEN MIDTRANS Settlement
+NODE MAILLER = SEND EMAIL Invoices WHEN BOOKING
+DEPLOY
+============DONE=================
+UploadImage       = Post with File, Update with File, File Validation (type & size)
+NODEMAILLER       = Register
+REDIS             = Schedule & Movie
+AUTHENT           = REFRESH TOKEN
+MIDTRANS          = - POST ke Midtarns
+                    - Midtrans Notif
+                    - Midtrans Di Helpers 
+                    --> SET DATA SUCCESS || CHANGE PAYMENT METHOD
+Booking     = PAYMENT GATEWAY 
+Booking     = Update Status When Payment Midtrans
+Booking     = EXPORT PDF
+PDFEXPORT   = TEMPLATE AMbil Dari .EJS
+VALIDASI KALO ADA IMAGE DI DATABASE (DELETED FILE)
+Booking = User GET BY Login Token
+------------------------------
