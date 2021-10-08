@@ -1,4 +1,4 @@
-<img src="icon.png" align="right" />
+<img src="https://i.postimg.cc/yYBp90yX/Tickitz-1.png" align="right" />
 
 # TickEz - Booking Your Movie [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
 > Cara Mudah Booking Film
@@ -27,17 +27,19 @@ Applikasi Backend Yang Dibuat Menggunakan Node.js.
 
 ![Logo](https://via.placeholder.com/750x500)
 
+
+
+<!-- Documentation lives at readthedocs.org -->
 ## :dvd: Demo
 
 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 
-| url                      | login          | password |
-| ------------------------ | -------------- | -------- |
-| http://exemplo.com/admin | admin@mail.com | 123      |
+| url                              | login                | password |
+| -------------------------------- | -------------------- | -------- |
+| http://localhost:3001/auth/login | ezlife9909@gmail.com | 123      |
+| http://localhost:3001/auth/login | ngademin@gmail.com   | 123      |
  -->
 <!-- ## :blue_book: Documentation -->
-
-<!-- Documentation lives at readthedocs.org -->
 
 ## :exclamation: Requirements
 
@@ -48,6 +50,9 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 
 ```
 git clone https://github.com/<user>/<project>
+```
+```
+Import tickez.sql To Your Phpmyadmin
 ```
 ```
 Rename .ENV.COPY To .ENV & Setup Your Account
@@ -87,6 +92,8 @@ $ npm run dev
 
 ## :gift: Release History
 
+- 0.1.1
+  - Export PDF
 - 0.1.0
   - UploadImage       = Post with File, Update with File, File Validation (type & size)
   - NODEMAILLER       = Register
@@ -112,7 +119,7 @@ $ npm run dev
 - [x] JWT
 - [x] Midtrans 
 - [x] Node Mailler 
-- [ ] Export PDF 
+- [x] Export PDF 
 
 </details>
 
