@@ -1,0 +1,931 @@
+{
+	"info": {
+		"_postman_id": "646e1246-6e39-46f7-b841-c2df31c360be",
+		"name": "PayTix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "M",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Reza",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ezlife9909@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ezlife9909@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "0812383782",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/auth/register",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ezlife9909@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ezlife9909@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/auth/login",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/auth/logout",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verif Email",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{dev}}/auth/verif-email/ezlife9909@gmail.com4",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"auth",
+								"verif-email",
+								"ezlife9909@gmail.com4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "refreshToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY1YTFhYWVlLTc1N2YtNGMwOC05OTRmLTRlMjllMTkwMzg5OSIsImZpcnN0TmFtZSI6Ik0iLCJsYXN0TmFtZSI6IlJlemEiLCJlbWFpbCI6ImV6bGlmZTk5MDlAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIwODEyMzgzNzgyIiwiaW1hZ2UiOm51bGwsInJvbGUiOiJhZG1pbiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRBdCI6IjIwMjEtMTAtMDdUMTE6Mjk6MDQuMDAwWiIsInVwZGF0ZWRBdCI6bnVsbCwiaWF0IjoxNjMzNjI1OTczLCJleHAiOjE2MzM3MTIzNzN9.OHn1QItZjC-TGblgQmxoAxJyxc3UgWfa5oEanNrWzRs",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/auth/refresh",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Detail User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/user/detail/f14b0810-249c-4217-93f6-6ce3580a109a",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"user",
+								"detail",
+								"f14b0810-249c-4217-93f6-6ce3580a109a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "Arima ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastName",
+									"value": "Rahuld",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "arima@mail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phoneNumber",
+									"value": "0834819382",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/user/update/profile",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Image",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ACER/Downloads/ec6489c9e8d8d1d811972ad4e5ee152a.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/user/update/image",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newPassword",
+									"value": "password123",
+									"type": "text"
+								},
+								{
+									"key": "confirmPassword",
+									"value": "password123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/user/update/password",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "GET All Chart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/dashboard/chart?movieId=3&location=Jakarta&premier=cineone21",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"dashboard",
+								"chart"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "3"
+								},
+								{
+									"key": "location",
+									"value": "Jakarta"
+								},
+								{
+									"key": "premier",
+									"value": "cineone21"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "Get All Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/movie?name=ipin&limit=4&sort=releaseDate&sortType=DESC",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"movie"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ipin"
+								},
+								{
+									"key": "limit",
+									"value": "4"
+								},
+								{
+									"key": "sort",
+									"value": "releaseDate"
+								},
+								{
+									"key": "sortType",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/movie/4",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"movie",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Money Heist",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Action",
+									"type": "text"
+								},
+								{
+									"key": "releaseDate",
+									"value": "2003-09-10",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "2 Hourse 58 Minute",
+									"type": "text"
+								},
+								{
+									"key": "director",
+									"value": "Steve Jobs",
+									"type": "text"
+								},
+								{
+									"key": "sypnosis",
+									"value": "Lorem Ipsum...",
+									"type": "text"
+								},
+								{
+									"key": "cast",
+									"value": "Steve Jobs",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ACER/Downloads/unnamed.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/movie",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Naruto Shippuden5s",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Action",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "releaseDate",
+									"value": "2020-10-09",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "synopsis",
+									"value": "Lorem ipsum...",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ACER/Downloads/Quiz1@2x.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/movie/61",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"movie",
+								"61"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/movie/63",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"movie",
+								"63"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Schedule",
+			"item": [
+				{
+					"name": "Get All Schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/schedule?location=Madura",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"schedule"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Madura"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "ASC",
+									"disabled": true
+								},
+								{
+									"key": "movieID",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/schedule/1",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"schedule",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Schedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "movieID",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Shingeki no kyojin",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "premier",
+									"value": "cineone21",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Jakarta",
+									"type": "text"
+								},
+								{
+									"key": "dateStart",
+									"value": "2021-08-21",
+									"type": "text"
+								},
+								{
+									"key": "dateEnd",
+									"value": "2021-08-22",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": " 08:30, 10:30, 12:00, 14:00, 16:30, 19:00, 20:30",
+									"description": "Default Value = 08:30, 10:30, 12:00, 14:00, 16:30, 19:00, 20:30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/schedule",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Schedule",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "movie_id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "90",
+									"type": "text"
+								},
+								{
+									"key": "premiere",
+									"value": "ebuid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "Jakarta",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dateStart",
+									"value": "2021-08-21",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dateEnd",
+									"value": "2021-08-22",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "time",
+									"value": "07:00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{dev}}/schedule/22",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"schedule",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Schedule",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/schedule/19",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"schedule",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Get Booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/booking?idBooking=16",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "idBooking",
+									"value": "16"
+								},
+								{
+									"key": "idUser",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Seat Booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/booking/seat?idSchedule=10&idMovie=9&dateSchedule=2021-10-25&timeSchedule=19:00:00",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"booking",
+								"seat"
+							],
+							"query": [
+								{
+									"key": "idSchedule",
+									"value": "10"
+								},
+								{
+									"key": "idMovie",
+									"value": "9"
+								},
+								{
+									"key": "dateSchedule",
+									"value": "2021-10-25"
+								},
+								{
+									"key": "timeSchedule",
+									"value": "19:00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Fajri\",\r\n    \"Email\": \"Fajri@gmail.com\",\r\n    \"phoneNumber\": \"082288855562\",\r\n    \"movieId\": 9,\r\n    \"scheduleId\": 10, \r\n    \"dateBooking\": \"2021-08-25\",\r\n    \"timeBooking\": \"19:00:00\",\r\n    \"paymentMethod\": \"Pulsa\",\r\n    \"seat\": [\"V1\",\"V2\",\"V3\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev}}/booking",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notify Midtrans",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"transaction_time\": \"2021-06-23 11:50:38\",\r\n  \"transaction_status\": \"cancel\",\r\n  \"transaction_id\": \"INV-2285-8-9\",\r\n  \"status_message\": \"midtrans payment notification\",\r\n  \"status_code\": \"200\", \r\n  \"signature_key\": \"ef0f472fa8a5165dc9f2ff6300832eb28657e88b9f3335ae5ebb27c8ef258d203c6da18ac6cd5738d2e38c54dfec860d8e067bdbc759a1268ab04218ccab93cc\",\r\n  \"settlement_time\": \"2021-06-23 12:17:29\",\r\n  \"payment_type\": \"bca_klikbca\",\r\n  \"order_id\": \"INV-6625-8-9\",\r\n  \"merchant_id\": \"G141532850\",\r\n  \"gross_amount\": \"1713600.00\",\r\n  \"currency\": \"IDR\",\r\n  \"approval_code\": \"ABC0101BCA02\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev}}/booking/success/notify",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"booking",
+								"success",
+								"notify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/booking/export/ticket/INV-4973-7-9",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"booking",
+								"export",
+								"ticket",
+								"INV-4973-7-9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYxNGIwODEwLTI0OWMtNDIxNy05M2Y2LTZjZTM1ODBhMTA5YSIsImZpcnN0TmFtZSI6Ik0iLCJsYXN0TmFtZSI6IlJhaHVsZCIsImVtYWlsIjoiZXpsaWZlOTkwOUBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjA4MTIzODM3ODIiLCJpbWFnZSI6bnVsbCwicm9sZSI6ImFkbWluIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZEF0IjoiMjAyMS0xMC0wOFQwMzowMjoyMi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0xMC0wOFQwMzowNTo0My4wMDBaIiwiaWF0IjoxNjMzNjgyNjc4LCJleHAiOjE2MzM2ODYyNzh9.MDT1g3mZCJOf15vLoCq5SeIHL9VWuAMi8Ud6FVP_CpQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
