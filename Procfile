@@ -1,1 +1,1 @@
-web: node ./src/indsssex.js
+web: node ./src/index.js

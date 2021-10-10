@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 const routerNavigation = require("./routes");
 
 const app = express();
-const port = process.env.APP_PORT;
+const port = process.env.PORT;
 
 app.use(morgan("dev"));
 app.use(cors());
