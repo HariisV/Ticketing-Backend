@@ -2,14 +2,10 @@ APP_NAME=Tickiz
 APP_URL=http://localhost:3001
 APP_PORT=3001
 
-DB_HOST=ec2-54-236-24-175.compute-1.amazonaws.com
-DB_DATABASE=fw11haris_tickez
-DB_USERNAME=fw11haris
-DB_PASSWORD=ljGfUd
-
-RDS_HOST = redis-15214.c1.ap-southeast-1-1.ec2.cloud.redislabs.com
-RDS_PORT = 15214
-RDS_PASS = 0nfXj0HEOBk7A8QRVkvnvWwjoEPiqXaB
+DB_HOST=localhost
+DB_DATABASE=tickez
+DB_USERNAME=root
+DB_PASSWORD=
 
 
 SMTP_SERVICE = gmail
