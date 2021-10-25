@@ -74,10 +74,10 @@ module.exports = {
       const checkUser = await modelAuth.getUserByEmail(email);
 
       if (checkUser.length < 1) {
-        return helperWrapper.response(res, 404, "Email not registed", null);
+        return helperWrapper.response(res, 400, "Email not registed", null);
       }
       if (checkUser[0].status === "notActive") {
-        return helperWrapper.response(res, 404, "Account Not Actived", null);
+        return helperWrapper.response(res, 400, "Account Not Actived", null);
       }
       const checkPassword = await bcrypt.compareSync(
         password,

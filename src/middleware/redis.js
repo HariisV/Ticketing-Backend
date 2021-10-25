@@ -62,7 +62,7 @@ module.exports = {
             res,
             200,
             "Success get schedule",
-            newResult.newResult,
+            newResult.result,
             newResult.pageInfo
           );
         }
@@ -90,12 +90,67 @@ module.exports = {
       next();
     });
   },
+  getScheduleByFilterRedis: (req, res, next) => {
+    const { id } = req.params;
+    // eslint-disable-next-line consistent-return
+    redis.get(`getSchedule:${id}`, (error, result) => {
+      if (!error && result !== null) {
+        console.log("data ada di dalam redis");
+        const newResult = JSON.parse(result);
+
+        return helperWrapper.response(
+          res,
+          200,
+          "Success get single schedule",
+          newResult
+        );
+      }
+      console.log("data tidak ada di dalam redis");
+      next();
+    });
+  },
+  getMovieRedisUpcoming: (req, res, next) => {
+    // eslint-disable-next-line consistent-return
+    redis.get(`getMovieUpcoming`, (error, result) => {
+      if (!error && result !== null) {
+        console.log("data ada di dalam redis");
+        const newResult = JSON.parse(result);
+
+        return helperWrapper.response(
+          res,
+          200,
+          "Success get single schedule",
+          newResult
+        );
+      }
+      console.log("data tidak ada di dalam redis");
+      next();
+    });
+  },
+
   clearScheduleRedis: (req, res, next) => {
     redis.keys("getSchedule:*", (error, result) => {
       if (result.length > 0) {
         result.forEach((item) => redis.del(item));
       }
       next();
+    });
+  },
+  getCity: (req, res, next) => {
+    redis.get("city:", (err, result) => {
+      if (!err && result !== null) {
+        console.log("DATA ADA DIDALAM REDIST");
+        const newRest = JSON.parse(result);
+
+        return helperWrapper.response(
+          res,
+          200,
+          "Success Get City Redis",
+          newRest
+        );
+      }
+      console.log("DATA CITY TIDAK ADA DI REDIS");
+      return next();
     });
   },
 };

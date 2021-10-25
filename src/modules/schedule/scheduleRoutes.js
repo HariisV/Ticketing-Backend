@@ -16,6 +16,11 @@ Router.get(
   scheduleController.getAllScheduleById
 );
 Router.post(
+  "/filter",
+  middlewareRedis.getScheduleByFilterRedis,
+  scheduleController.getScheduleByFilter
+);
+Router.post(
   "/",
   authMiddleware.authentication,
   authMiddleware.isAdmin,

@@ -15,6 +15,33 @@ module.exports = {
         }
       );
     }),
+  getMovieUpcoming: (date) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        `SELECT * FROM movie WHERE releaseDate > "${date}"`,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res);
+          }
+        }
+      );
+    }),
+  getMovieUpcomingFilter: (date, Month) =>
+    new Promise((resolve, reject) => {
+      const pp = connection.query(
+        `SELECT * FROM movie WHERE releaseDate > "${date}" AND Month(releaseDate) = "${Month}" AND Year(releaseDate) > 2021`,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res);
+          }
+        }
+      );
+      console.log(pp.sql);
+    }),
   getMovieById: (id) =>
     new Promise((resolve, reject) => {
       connection.query("SELECT * FROM Movie WHERE id = ?", id, (err, res) => {

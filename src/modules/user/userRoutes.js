@@ -2,6 +2,7 @@ const express = require("express");
 
 const Router = express.Router();
 const middlewareAuth = require("../../middleware/auth");
+const middlewareRedis = require("../../middleware/redis");
 const user = require("./userController");
 const middlewareImageUser = require("../../middleware/ImageUser");
 
@@ -22,5 +23,6 @@ Router.patch(
   user.updateImage
 );
 Router.get("/detail/:id", middlewareAuth.authentication, user.detailUserById);
+Router.get("/city", middlewareRedis.getCity, user.getCity);
 
 module.exports = Router;

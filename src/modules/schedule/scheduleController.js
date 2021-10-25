@@ -80,7 +80,6 @@ module.exports = {
     try {
       const { id } = req.params;
       const result = await scheduleModel.getScheduleById(id);
-      result[0].time = result[0].time.split(",");
       if (result.length < 1) {
         return helperWrapper.response(
           res,
@@ -89,8 +88,61 @@ module.exports = {
           null
         );
       }
+      result[0].time = result[0].time.split(",");
       redis.setex(`getSchedule:${id}`, 3600, JSON.stringify(result));
       return helperWrapper.response(res, 200, "success Get Data", result);
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `bad Request : ${error.message}`,
+        null
+      );
+    }
+  },
+  getScheduleByFilter: async (req, res) => {
+    try {
+      const { date, location, page, movieId } = req.body;
+      const limit = 3;
+      const offset = page * limit - limit;
+
+      const result = await scheduleModel.getScheduleByFilter(
+        date,
+        location,
+        offset,
+        limit,
+        movieId
+      );
+      const countData = await scheduleModel.getCountScheduleByFilter(
+        date,
+        location
+      );
+      if (result.length < 1) {
+        return helperWrapper.response(
+          res,
+          404,
+          `Schedule Tidak Ditemukan`,
+          null
+        );
+      }
+      result.forEach((element, index) => {
+        result[index].time = element.time.split(",");
+      });
+
+      const pageInfo = {
+        page,
+        totalPage: Math.ceil(countData / limit),
+        limit,
+        totalData: countData,
+      };
+      redis.setex(`getSchedule:${date}`, 3600, JSON.stringify(result));
+      return helperWrapper.response(
+        res,
+        200,
+        "success Get Data",
+        result,
+        pageInfo
+      );
     } catch (error) {
       return helperWrapper.response(
         res,

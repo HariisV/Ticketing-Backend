@@ -21,6 +21,8 @@ app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static("public"));
+
 app.use("/", routerNavigation);
 app.use("/*", (request, response) => {
   response.status(404).send("Path Not Found !");

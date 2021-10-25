@@ -37,4 +37,14 @@ module.exports = {
         }
       );
     }),
+  getCity: () =>
+    new Promise((resolve, reject) => {
+      connection.query(`SELECT * From city`, (err, res) => {
+        if (!err) {
+          resolve(res);
+        } else {
+          reject(new Error(`SQL: ${err.sqlMessage}`));
+        }
+      });
+    }),
 };

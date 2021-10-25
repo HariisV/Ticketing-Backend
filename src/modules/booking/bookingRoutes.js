@@ -10,6 +10,12 @@ Router.get(
   middlewareAuth.isAdmin,
   bookingController.getAllBooking
 );
+// Router.get(
+//   "/used-ticked/:id",
+//   middlewareAuth.authentication,
+//   middlewareAuth.isAdmin,
+//   bookingController.usedTicked
+// );
 Router.get("/Seat", bookingController.getAllBookingSeat);
 Router.post("/", middlewareAuth.authentication, bookingController.postBooking);
 Router.patch(

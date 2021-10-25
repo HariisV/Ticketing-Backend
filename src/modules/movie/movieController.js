@@ -62,6 +62,51 @@ module.exports = {
       );
     }
   },
+  getMovieUpcoming: async (req, res) => {
+    try {
+      const date = new Date();
+      const dateNow = `${date.getFullYear()}-${
+        date.getMonth() + 1
+      }-${date.getDate()}`;
+      const result = await movieModel.getMovieUpcoming(dateNow);
+      if (result.length < 1) {
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
+      }
+      // console.log(result);
+      redis.setex(`getMovieUpcoming`, 3600, JSON.stringify(result));
+
+      return helperWrapper.response(res, 200, "success Get Data", result);
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `bad Request : ${error.message}`,
+        null
+      );
+    }
+  },
+  getMovieUpcomingFilter: async (req, res) => {
+    try {
+      const { month } = req.body;
+      const date = new Date();
+      const dateNow = `${date.getFullYear()}-${
+        date.getMonth() + 1
+      }-${date.getDate()}`;
+      const result = await movieModel.getMovieUpcomingFilter(dateNow, month);
+      if (result.length < 1) {
+        return helperWrapper.response(res, 400, `Data Tidak Ditemukan`, null);
+      }
+      // redis.setex(`getMovieUpcoming`, 3600, JSON.stringify(result));
+      return helperWrapper.response(res, 200, "success Get Data", result);
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `bad Request : ${error.message}`,
+        null
+      );
+    }
+  },
   getMovieById: async (req, res) => {
     try {
       const { id } = req.params;

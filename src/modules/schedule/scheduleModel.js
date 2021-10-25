@@ -28,12 +28,38 @@ module.exports = {
         }
       );
     }),
+  getScheduleByFilter: (date, location, offset, limit, movieId) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        `SELECT * from schedule WHERE movieId = "${movieId}" AND dateStart <= "${date}" AND dateEnd >= "${date}" AND location = "${location}" Limit ${limit} OFFSET ${offset}`,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res);
+          }
+        }
+      );
+    }),
   getCountSchedule: (movieID, location) =>
     new Promise((resolve, reject) => {
       connection.query(
         "SELECT COUNT(*) As total FROM schedule WHERE movieID Like ? AND location Like ?",
         [movieID, location],
-        (err, res) => { 
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res[0].total);
+          }
+        }
+      );
+    }),
+  getCountScheduleByFilter: (date, location) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        `SELECT COUNT(*) As total FROM schedule WHERE dateStart <= "${date}" AND dateEnd >= "${date}" AND location = "${location}"`,
+        (err, res) => {
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));
           } else {

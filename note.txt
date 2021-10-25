@@ -12,6 +12,7 @@ MIDTRANS          = - POST ke Midtarns
                     - Midtrans Di Helpers 
                     --> SET DATA SUCCESS || CHANGE PAYMENT METHOD
 Booking     = PAYMENT GATEWAY 
+Booking     = USE Ticked
 Booking     = Update Status When Payment Midtrans
 Booking     = EXPORT PDF
 PDFEXPORT   = TEMPLATE AMbil Dari .EJS

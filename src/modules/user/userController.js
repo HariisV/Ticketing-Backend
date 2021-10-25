@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt");
 const helperWrapper = require("../../helpers/wrapper");
 const modelUser = require("./userModel");
+const redis = require("../../config/redis");
+
 const deleteFile = require("../../helpers/delete");
 
 module.exports = {
@@ -102,6 +104,21 @@ module.exports = {
         "Success Get User By Id",
         updateImage
       );
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `Bad request (${error.message})`,
+        null
+      );
+    }
+  },
+  getCity: async (req, res) => {
+    try {
+      const data = await modelUser.getCity();
+      redis.setex(`city:`, 3600, JSON.stringify(data));
+
+      return helperWrapper.response(res, 200, "Success Get City", data);
     } catch (error) {
       return helperWrapper.response(
         res,

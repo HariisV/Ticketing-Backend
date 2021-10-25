@@ -6,7 +6,18 @@ const movieController = require("./movieController");
 const middlewareMovie = require("../../middleware/ImageMovie");
 const middlewareRedis = require("../../middleware/redis");
 
+Router.post(
+  "/upcoming/",
+  // middlewareRedis.getMovieByIdRedis,
+  movieController.getMovieUpcomingFilter
+);
 Router.get("/", middlewareRedis.getMovieRedis, movieController.getAllMovie);
+Router.get(
+  "/upcoming",
+  middlewareRedis.getMovieRedisUpcoming,
+  movieController.getMovieUpcoming
+);
+
 Router.get(
   "/:id",
   middlewareRedis.getMovieByIdRedis,
