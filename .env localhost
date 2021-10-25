@@ -1,13 +1,15 @@
 APP_NAME=Tickiz
 APP_URL=http://localhost:3001
-APP_PORT=3001
+PORT=3001
 
 DB_HOST=localhost
 DB_DATABASE=tickez
 DB_USERNAME=root
 DB_PASSWORD=
 
-
+RDS_HOST = redis-15214.c1.ap-southeast-1-1.ec2.cloud.redislabs.com
+RDS_PORT = 15214
+RDS_PASS = 0nfXj0HEOBk7A8QRVkvnvWwjoEPiqXaB
 SMTP_SERVICE = gmail
 SMTP_USER = hariswh9@gmail.com
 SMTP_PASS = den588nyn
