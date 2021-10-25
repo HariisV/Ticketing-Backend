@@ -4,7 +4,7 @@ module.exports = {
   getAllMovie: (limit, offset, name, sort, sortType) =>
     new Promise((resolve, reject) => {
       connection.query(
-        `SELECT * FROM Movie WHERE name LIKE ? ORDER BY ${sort} ${sortType} LIMIT ? OFFSET ?`,
+        `SELECT * FROM movie WHERE name LIKE ? ORDER BY ${sort} ${sortType} LIMIT ? OFFSET ?`,
         [name, limit, offset],
         (err, res) => {
           if (err) {
@@ -18,7 +18,7 @@ module.exports = {
   getMovieUpcoming: (date) =>
     new Promise((resolve, reject) => {
       connection.query(
-        `SELECT * FROM Movie WHERE releaseDate > "${date}"`,
+        `SELECT * FROM movie WHERE releaseDate > "${date}"`,
         (err, res) => {
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));
@@ -31,7 +31,7 @@ module.exports = {
   getMovieUpcomingFilter: (date, Month) =>
     new Promise((resolve, reject) => {
       const pp = connection.query(
-        `SELECT * FROM Movie WHERE releaseDate > "${date}" AND Month(releaseDate) = "${Month}" AND Year(releaseDate) > 2021`,
+        `SELECT * FROM movie WHERE releaseDate > "${date}" AND Month(releaseDate) = "${Month}" AND Year(releaseDate) > 2021`,
         (err, res) => {
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));
@@ -44,7 +44,7 @@ module.exports = {
     }),
   getMovieById: (id) =>
     new Promise((resolve, reject) => {
-      connection.query("SELECT * FROM Movie WHERE id = ?", id, (err, res) => {
+      connection.query("SELECT * FROM movie WHERE id = ?", id, (err, res) => {
         if (err) {
           reject(new Error(`SQL : ${err.sqlMessage}`));
         } else {
@@ -55,7 +55,7 @@ module.exports = {
   getCountMovie: (name) =>
     new Promise((resolve, reject) => {
       connection.query(
-        "SELECT COUNT(*) As total FROM Movie WHERE name LIKE ?",
+        "SELECT COUNT(*) As total FROM movie WHERE name LIKE ?",
         name,
         (err, res) => {
           if (err) {
@@ -97,7 +97,7 @@ module.exports = {
 
   deleteMovie: (id) =>
     new Promise((resolve, reject) => {
-      connection.query("DELETE FROM Movie WHERE id = ?", id, (err) => {
+      connection.query("DELETE FROM movie WHERE id = ?", id, (err) => {
         if (!err) {
           resolve(id);
         } else {
