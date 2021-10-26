@@ -68,7 +68,7 @@ module.exports = {
     }),
   postMovie: (data) =>
     new Promise((resolve, reject) => {
-      connection.query("INSERT INTO Movie SET ?", data, (error, result) => {
+      connection.query("INSERT INTO movie SET ?", data, (error, result) => {
         if (!error) {
           const newRes = {
             id: result.insertId,
@@ -82,7 +82,7 @@ module.exports = {
     }),
   updateMovie: (data, id) =>
     new Promise((resolve, reject) => {
-      connection.query("UPDATE Movie SET ? WHERE id = ?", [data, id], (err) => {
+      connection.query("UPDATE movie SET ? WHERE id = ?", [data, id], (err) => {
         if (!err) {
           const newRes = {
             id,
