@@ -429,7 +429,6 @@ module.exports = {
               .toFile(
                 path.resolve(`./public/generate/${fileName}`),
                 (error, result) => {
-                  console.log(result);
                   if (error) {
                     console.log(error);
                   } else {

@@ -16,6 +16,7 @@ module.exports = {
       const offset = page * limit - limit;
       const totalData = await movieModel.getCountMovie(name);
       const totalPage = Math.ceil(totalData / limit);
+
       const pageInfo = {
         page,
         totalPage,
@@ -72,7 +73,6 @@ module.exports = {
       if (result.length < 1) {
         return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
       }
-      // console.log(result);
       redis.setex(`getMovieUpcoming`, 3600, JSON.stringify(result));
 
       return helperWrapper.response(res, 200, "success Get Data", result);
@@ -247,7 +247,7 @@ module.exports = {
       return helperWrapper.response(
         res,
         200,
-        `Succes Deleted Movie Where Id: ${id}`,
+        `Succes Deleted Movie Id: ${id}`,
         result
       );
     } catch (error) {

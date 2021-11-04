@@ -22,7 +22,7 @@ Router.patch(
   middlewareImageUser,
   user.updateImage
 );
-Router.get("/detail/:id", middlewareAuth.authentication, user.detailUserById);
+Router.post("/detail/:id", user.detailUserById);
 Router.get("/city", middlewareRedis.getCity, user.getCity);
 
 module.exports = Router;

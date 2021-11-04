@@ -58,7 +58,9 @@ module.exports = {
         );
       }
       const result = await modelAuth.verifEmail(id);
-      return helperWrapper.response(res, 200, "Success Actived User", result);
+      res.redirect(`${process.env.APP_URL_FRONTEND}/register?page=success`);
+
+      // return helperWrapper.response(res, 200, "Success Actived User", result);
     } catch (error) {
       return helperWrapper.response(
         res,
@@ -90,7 +92,7 @@ module.exports = {
       const payload = checkUser[0];
       delete payload.password;
       const token = jwt.sign({ ...payload }, process.env.JWT_PRIVATE, {
-        expiresIn: "1h",
+        expiresIn: "24h",
       });
 
       // RefresHToken

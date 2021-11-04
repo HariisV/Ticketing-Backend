@@ -11,7 +11,11 @@ Router.post(
   // middlewareRedis.getMovieByIdRedis,
   movieController.getMovieUpcomingFilter
 );
-Router.get("/", middlewareRedis.getMovieRedis, movieController.getAllMovie);
+Router.get(
+  "/",
+  //  middlewareRedis.getMovieRedis,
+  movieController.getAllMovie
+);
 Router.get(
   "/upcoming",
   middlewareRedis.getMovieRedisUpcoming,

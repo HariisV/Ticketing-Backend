@@ -70,17 +70,22 @@ module.exports = {
     }),
   postSchedule: (data) =>
     new Promise((resolve, reject) => {
-      connection.query("INSERT INTO schedule SET?", data, (err, res) => {
-        if (err) {
-          reject(new Error(`SQL : ${err.sqlMessage}`));
-        } else {
-          const newRes = {
-            id: res.insertId,
-            ...data,
-          };
-          resolve(newRes);
+      const pp = connection.query(
+        "INSERT INTO schedule SET?",
+        data,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            const newRes = {
+              id: res.insertId,
+              ...data,
+            };
+            resolve(newRes);
+          }
         }
-      });
+      );
+      console.log(pp.sql);
     }),
   updateSchedule: (id, setData) =>
     new Promise((resolve, reject) => {

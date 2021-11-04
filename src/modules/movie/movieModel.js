@@ -30,7 +30,7 @@ module.exports = {
     }),
   getMovieUpcomingFilter: (date, Month) =>
     new Promise((resolve, reject) => {
-      const pp = connection.query(
+      connection.query(
         `SELECT * FROM movie WHERE releaseDate > "${date}" AND Month(releaseDate) = "${Month}" AND Year(releaseDate) > 2021`,
         (err, res) => {
           if (err) {
@@ -40,7 +40,6 @@ module.exports = {
           }
         }
       );
-      console.log(pp.sql);
     }),
   getMovieById: (id) =>
     new Promise((resolve, reject) => {

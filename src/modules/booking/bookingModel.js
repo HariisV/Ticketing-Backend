@@ -34,13 +34,16 @@ OR booking.userId = ${idUser}`,
     }),
   getBookingById: (id) =>
     new Promise((resolve, reject) => {
-      connection.query(`SELECT * FROM booking WHERE id = ${id}`, (err, res) => {
-        if (err) {
-          reject(new Error(`SQL : ${err.sqlMessage}`));
-        } else {
-          resolve(res);
+      connection.query(
+        `SELECT * FROM booking WHERE id = "${id}"`,
+        (err, res) => {
+          if (err) {
+            reject(new Error(`SQL : ${err.sqlMessage}`));
+          } else {
+            resolve(res);
+          }
         }
-      });
+      );
     }),
   getPriceBySchedule: (id) =>
     new Promise((resolve, reject) => {
@@ -58,7 +61,7 @@ OR booking.userId = ${idUser}`,
   getBookingByIdUser: (id) =>
     new Promise((resolve, reject) => {
       connection.query(
-        `SELECT * FROM booking WHERE userId = ${id}`,
+        `SELECT * FROM booking WHERE userId = "${id}"`,
         (err, res) => {
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));

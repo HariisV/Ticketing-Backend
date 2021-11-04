@@ -23,6 +23,9 @@ module.exports = {
         location,
         premier
       );
+      if (getData.length < 1) {
+        return helperWrapper.response(res, 404, `Data Tidak Ditemukan`, null);
+      }
 
       return helperWrapper.response(res, 200, `Data Ditemukan`, getData);
     } catch (error) {

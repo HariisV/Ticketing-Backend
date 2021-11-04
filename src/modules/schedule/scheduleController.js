@@ -84,7 +84,7 @@ module.exports = {
         return helperWrapper.response(
           res,
           404,
-          `Data Dengan ID ${id} Tidak Ditemukan`,
+          `Schedule ${id} Tidak Ditemukan`,
           null
         );
       }
@@ -121,7 +121,7 @@ module.exports = {
         return helperWrapper.response(
           res,
           404,
-          `Schedule Tidak Ditemukan`,
+          `Schedule Di ${location} Tidak Ditemukan`,
           null
         );
       }
@@ -168,7 +168,7 @@ module.exports = {
         time,
       };
       Object.keys(setData).forEach((el) => {
-        if (setData[el] == null) {
+        if (setData[el] == null || setData[el] == "") {
           isNull = el;
         }
       });
@@ -199,7 +199,7 @@ module.exports = {
         return helperWrapper.response(
           res,
           404,
-          `Data Dengan ID ${id} Tidak Ditemukan`,
+          `Schedule ${id} Tidak Ditemukan`,
           null
         );
       }
@@ -247,7 +247,7 @@ module.exports = {
         return helperWrapper.response(
           res,
           404,
-          `Data Dengan ID ${id} Tidak Ditemukan`,
+          `Schedule ${id} Tidak Ditemukan`,
           null
         );
       }
