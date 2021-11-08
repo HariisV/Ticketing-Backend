@@ -13,14 +13,14 @@ module.exports = {
     try {
       const { email, firstName, lastName, password, phoneNumber } = req.body;
       const isRegister = await modelAuth.getUserByEmail(email);
-      if (isRegister.length > 0) {
-        return helperWrapper.response(
-          res,
-          400,
-          `Email: ${email} Telah digunakan Di Akun Lain`,
-          null
-        );
-      }
+      // if (isRegister.length > 0) {
+      //   return helperWrapper.response(
+      //     res,
+      //     400,
+      //     `Email: ${email} Telah digunakan Di Akun Lain`,
+      //     null
+      //   );
+      // }
       // PROSES ENCRYPT PASSWORD
       const setData = {
         id: uuidv4(),

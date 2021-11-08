@@ -7,7 +7,7 @@ const Router = express.Router();
 Router.get(
   "/",
   middlewareAuth.authentication,
-  middlewareAuth.isAdmin,
+  // middlewareAuth.isAdmin,
   bookingController.getAllBooking
 );
 // Router.get(
