@@ -30,7 +30,7 @@ module.exports = {
         }
       );
     }),
-    getUserById: (id) =>
+  getUserById: (id) =>
     new Promise((resolve, reject) => {
       connection.query(
         `SELECT * FROM users WHERE id = '${id}'`,

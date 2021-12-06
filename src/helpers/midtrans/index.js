@@ -23,11 +23,11 @@ module.exports = {
       snap
         .createTransaction(parameter)
         .then((result) => {
-          // console.log(result);
+          //
           resolve(result.redirect_url);
         })
         .catch((error) => {
-          // console.log(error);
+          //
           reject(error);
         });
     }),

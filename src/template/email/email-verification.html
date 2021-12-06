@@ -1,78 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickez - Email Verification</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
-<style>
-  *{
-    font-family: 'Poppins', sans-serif;  }
-</style>    
-</head>
-  <body style="margin: 0; padding: 0; box-sizing: border-box;">
-  <div class="card" >
-    <table cellpadding="0" cellspacing="0" width="95%">
-      <tr>
-        <td align="center">
-          <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-spacing: 2px 5px;">
-            <tr>
-              <td align="center" style="padding: 5px 5px 5px 5px;">
-                <a href="{{url}}" target="_blank">
-                  <img src="https://i.postimg.cc/yYBp90yX/Tickitz-1.png" alt="Logo" style="width:120px; margin: -100px -100px; border:0;"/>
-                </a>
-              </td>
-            </tr>
-           
-            <tr>
-              <td bgcolor="#fff">
-                <table cellpadding="0" cellspacing="0" width="100%%">
-                  <tr>
-                    <td style="font-family: 'Poppins', sans-serif; padding: 10px 0 10px 0;  font-size: 20px; font-weight: 600;text-align: center;">
-                      Request to Reset Your Account Password
-                    </td>
-                  </tr>
-                  
-                  <tr>
-                    <td style="padding: 20px 0 20px 0;  font-size: 16px; text-align: center;">
-                      <img src="https://i.postimg.cc/9XY27TQz/lock-1.png" style="width: 200px" alt="">
-                    </td>
-                  </tr>
-                  <tr>
-                    <tr>
-                      <td>
-                       <p style=" font-family: 'Poppins', sans-serif; text-align: center;font-weight: 300;">
-                        The following is the button for you to reset the password.
-                       </p>
-                      </td>
-                    </tr>
-                  </tr>
-                  <tr>
-                    <td style="padding: 20px 0 20px 0;  font-size: 16px; text-align: center;">
-                      <a href="{{url}}/auth/Verif-Email/{{keyId}}">
-                          <button style="background-color: #FBB017; border: none; color: white; padding: 10px 39px; text-align: center; display: inline-block;  font-size: 12px; font-weight: bold; cursor: pointer;margin-bottom: 50px;">
-                            Change Password
-                          </button>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="background-color: #5E50A1; border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;">
-                    <p>asd</p>
-                  </td>
-                  </tr>
-                 
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: arial;
+        font-size: 10pt;
+        background: url("https://p0.pikrepo.com/preview/946/3/untitled.jpg");
+      }
+      img {
+        display: block;
+        width: 300px;
+        margin: auto;
+        margin-bottom: 5%;
+      }
+      h1 {
+        text-align: center;
+        color: #6379f4;
+        font-size: 50px;
+      }
+      h2 {
+        font-family: arial;
+        font-size: 10pt;
+        padding-left: 10px;
+        color: #383838;
+      }
+      li {
+        line-height: 1em;
+        margin-bottom: 12px;
+      }
+      span {
+        color: blue;
+      }
+      .wrapper {
+        width: 90%;
+        margin: 20px auto;
+      }
+      .end {
+        padding-top: 4%;
+      }
+      p .box {
+        padding-top: 5%;
+      }
+      .box {
+        margin: 30px;
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.8;
+        padding: 20px;
+        filter: alpha(opacity=60);
+      }
+      .box-bottom {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      @media screen and (min-width: 600px) {
+        .wrapper {
+          width: 60%;
+          margin: 20px auto;
+        }
+        p .box {
+          padding-top: 2%;
+        }
+        .end {
+          padding-top: 4%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="box">
+        <h1>Tickez</h1>
+        <div>
+          <h4 class="end" style="text-align: left">Hi,</h4>
+          <p>Thanks for register and welcome to the Tickez app!</p>
+          <p>
+            Your account has been successfully added and you can now login to
+            our App and start exploring. Click
+            <a href="{{url}}/auth/Verif-Email/{{keyId}}">here</a> to verify your
+            Email.
+          </p>
+          <p class="end">
+            <i>This is an automated email. Do not reply this email.</i>
+          </p>
+        </div>
+      </div>
+      <div class="box-bottom">
+        <p>
+          If you have questions, please do not hesitate to contact us through
+          direct message in the App or email to
+          <a href="tickez@gmail.com">tickez@gmail.com</a>.
+        </p>
+        <p>© Code in 2021</p>
+      </div>
+    </div>
   </body>
 </html>

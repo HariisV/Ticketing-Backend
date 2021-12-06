@@ -30,5 +30,4 @@ app.use("/*", (request, response) => {
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`Express App Listen On Port : ${port}`);
 });

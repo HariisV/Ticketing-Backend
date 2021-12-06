@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickez - Email Verification</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+<style>
+  *{
+    font-family: 'Poppins', sans-serif;  }
+</style>    
 </head>
   <body style="margin: 0; padding: 0; box-sizing: border-box;">
+  <div class="card" >
     <table cellpadding="0" cellspacing="0" width="95%">
       <tr>
         <td align="center">
@@ -16,55 +23,49 @@
             <tr>
               <td align="center" style="padding: 5px 5px 5px 5px;">
                 <a href="{{url}}" target="_blank">
-                  <img src="https://i.postimg.cc/yYBp90yX/Tickitz-1.png" alt="Logo" style="width:420px; margin: -100px -100px; border:0;"/>
+                  <img src="https://i.postimg.cc/yYBp90yX/Tickitz-1.png" alt="Logo" style="width:120px; margin: -100px -100px; border:0;"/>
                 </a>
               </td>
             </tr>
-            <tr>
-              <td style="background-color: #fff;">
-                <table cellpadding="0" cellspacing="0" width="100%%">
-                  <tr>
-                    <td style="padding: 10px 0 10px 0; font-family: Nunito, sans-serif; font-size: 20px; font-weight: 900">
-                      Aktifkan Akun Tickez Anda
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+           
             <tr>
               <td bgcolor="#fff">
                 <table cellpadding="0" cellspacing="0" width="100%%">
                   <tr>
-                    <td style="padding: 20px 0 20px 0; font-family: Nunito, sans-serif; font-size: 16px;">
-                      Hi, <span id="name">{{name}}</span>
+                    <td style="font-family: 'Poppins', sans-serif; padding: 10px 0 10px 0;  font-size: 20px; font-weight: 600;text-align: center;">
+                      Request to Reset Your Account Password
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td style="padding: 20px 0 20px 0;  font-size: 16px; text-align: center;">
+                      <img src="https://i.postimg.cc/9XY27TQz/lock-1.png" style="width: 200px" alt="">
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 0; font-family: Nunito, sans-serif; font-size: 16px;">
-                      Terima kasih telah mendaftar di Tickez. Mohon konfirmasi email ini untuk mengaktifkan akun Tickez Anda.
-                    </td>
+                    <tr>
+                      <td>
+                       <p style=" font-family: 'Poppins', sans-serif; text-align: center;font-weight: 300;">
+                        The following is the button for you to reset the password.
+                       </p>
+                      </td>
+                    </tr>
                   </tr>
                   <tr>
-                    <td style="padding: 20px 0 20px 0; font-family: Nunito, sans-serif; font-size: 16px; text-align: center;">
+                    <td style="padding: 20px 0 20px 0;  font-size: 16px; text-align: center;">
                       <a href="{{url}}/auth/Verif-Email/{{keyId}}">
-                          <button style="background-color: #e04420; border: none; color: white; padding: 15px 40px; text-align: center; display: inline-block; font-family: Nunito, sans-serif; font-size: 18px; font-weight: bold; cursor: pointer;">
-                            Konfimasi Email
+                          <button style="background-color: #FBB017; border: none; color: white; padding: 10px 39px; text-align: center; display: inline-block;  font-size: 12px; font-weight: bold; cursor: pointer;margin-bottom: 50px;">
+                            Change Password
                           </button>
                       </a>
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 0; font-family: Nunito, sans-serif; font-size: 16px;">
-                      Jika Anda kesulitan mengklik tombol "Konfirmasi Email", copy dan paste URL di bawah ke dalam browser Anda:
-                      <p id="url">{{url}}/auth/Verif-Email/{{keyId}}</p>
-                    </td>
+                    <td style="background-color: #5E50A1; border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;">
+                    <p>asd</p>
+                  </td>
                   </tr>
-                  <tr>
-                    <td style="padding: 50px 0; font-family: Nunito, sans-serif; font-size: 16px;">
-                      Regards,
-                      <p>Tickez - Book Your Movie</p>
-                    </td>
-                  </tr>
+                 
                 </table>
               </td>
             </tr>
@@ -72,5 +73,6 @@
         </td>
       </tr>
     </table>
+  </div>
   </body>
 </html>

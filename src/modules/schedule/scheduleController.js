@@ -105,7 +105,9 @@ module.exports = {
       const { date, location, page, movieId } = req.body;
       const limit = 3;
       const offset = page * limit - limit;
-
+      console.log("=========================");
+      console.log(req.body);
+      console.log("=========================");
       const result = await scheduleModel.getScheduleByFilter(
         date,
         location,

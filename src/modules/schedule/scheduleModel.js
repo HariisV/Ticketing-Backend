@@ -3,7 +3,7 @@ const connection = require("../../config/mysql");
 module.exports = {
   getAllSchedule: (limit, offset, movieID, location, sort, sortType) =>
     new Promise((resolve, reject) => {
-      connection.query(
+      const pp = connection.query(
         `SELECT * FROM schedule WHERE movieID Like ? AND location Like ? ORDER BY ${sort} ${sortType} LIMIT ? OFFSET ?`,
         [movieID, location, limit, offset],
         (err, res) => {
@@ -30,7 +30,7 @@ module.exports = {
     }),
   getScheduleByFilter: (date, location, offset, limit, movieId) =>
     new Promise((resolve, reject) => {
-      connection.query(
+      const pp = connection.query(
         `SELECT * from schedule WHERE movieId = "${movieId}" AND dateStart <= "${date}" AND dateEnd >= "${date}" AND location = "${location}" Limit ${limit} OFFSET ${offset}`,
         (err, res) => {
           if (err) {
@@ -40,6 +40,7 @@ module.exports = {
           }
         }
       );
+      console.log(pp.sql);
     }),
   getCountSchedule: (movieID, location) =>
     new Promise((resolve, reject) => {
@@ -85,7 +86,6 @@ module.exports = {
           }
         }
       );
-      console.log(pp.sql);
     }),
   updateSchedule: (id, setData) =>
     new Promise((resolve, reject) => {

@@ -13,14 +13,14 @@ module.exports = {
     try {
       const { email, firstName, lastName, password, phoneNumber } = req.body;
       const isRegister = await modelAuth.getUserByEmail(email);
-      // if (isRegister.length > 0) {
-      //   return helperWrapper.response(
-      //     res,
-      //     400,
-      //     `Email: ${email} Telah digunakan Di Akun Lain`,
-      //     null
-      //   );
-      // }
+      if (isRegister.length > 0) {
+        return helperWrapper.response(
+          res,
+          400,
+          `Email: ${email} Telah digunakan Di Akun Lain`,
+          null
+        );
+      }
       // PROSES ENCRYPT PASSWORD
       const setData = {
         id: uuidv4(),
@@ -31,11 +31,15 @@ module.exports = {
         lastName,
         password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
       };
-
       const result = await modelAuth.register(setData);
-      sendEmail.register(email, firstName, result.id);
+      const sendEmails = sendEmail.register(email, firstName, result.id);
 
-      return helperWrapper.response(res, 200, "Success register user", result);
+      return helperWrapper.response(
+        res,
+        200,
+        "Success register user",
+        sendEmails
+      );
     } catch (error) {
       return helperWrapper.response(
         res,
@@ -132,7 +136,7 @@ module.exports = {
   },
   refreshToken: async (req, res) => {
     try {
-      // console.log(req.body);
+      //
       const { refreshToken } = req.body;
       // PROSES PENGECEKAN REFRESH TOKEN APAKAH BISA DIGUNAKAN ATAU TIDAK
       redis.get(`refreshToken:${refreshToken}`, (error, result) => {
