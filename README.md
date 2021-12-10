@@ -28,19 +28,19 @@ Applikasi Backend Yang Dibuat Menggunakan Node.js.
 ![Logo](https://via.placeholder.com/750x500)
 
 
-
+<!-- 
 <!-- Documentation lives at readthedocs.org -->
-## :dvd: Demo
+<!-- ## :dvd: Demo -->
 
-Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+<!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. -->
 
-| url                              | login                | password |
-| -------------------------------- | -------------------- | -------- |
-| http://localhost:3001/auth/login | ezlife9909@gmail.com | 123      |
-| http://localhost:3001/auth/login | ngademin@gmail.com   | 123      |
- -->
+<!-- | url                              | login                | password | -->
+<!-- | -------------------------------- | -------------------- | -------- | -->
+<!-- | http://localhost:3001/auth/login | ezlife9909@gmail.com | 123      | -->
+<!-- | http://localhost:3001/auth/login | ngademin@gmail.com   | 123      | -->
+<!--  --> -->
 <!-- ## :blue_book: Documentation -->
-
+ -->
 ## :exclamation: Requirements
 
 - [Node](https://nodejs.org/en/download/)
