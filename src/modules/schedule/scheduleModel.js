@@ -30,7 +30,7 @@ module.exports = {
     }),
   getScheduleByFilter: (date, location, offset, limit, movieId) =>
     new Promise((resolve, reject) => {
-      const pp = connection.query(
+      connection.query(
         `SELECT * from schedule WHERE movieId = "${movieId}" AND dateStart <= "${date}" AND dateEnd >= "${date}" AND location = "${location}" Limit ${limit} OFFSET ${offset}`,
         (err, res) => {
           if (err) {
@@ -40,7 +40,6 @@ module.exports = {
           }
         }
       );
-      console.log(pp.sql);
     }),
   getCountSchedule: (movieID, location) =>
     new Promise((resolve, reject) => {
