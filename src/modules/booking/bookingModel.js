@@ -4,12 +4,13 @@ module.exports = {
   getAllBooking: (id, idUser) =>
     new Promise((resolve, reject) => {
       connection.query(
-        `SELECT booking.id, booking.invoice,booking.userId,booking.dateBooking,booking.timeBooking,booking.movieId,booking.scheduleId,booking.totalTicket,booking.totalPayment,booking.paymentMethod,booking.statusPayment, seatbooking.seat
+        `SELECT booking.id, booking.invoice,schedule.premier, movie.name, booking.userId,booking.dateBooking,booking.timeBooking,booking.movieId,booking.scheduleId,booking.totalTicket,booking.totalPayment,booking.paymentMethod,booking.statusPayment, seatbooking.seat
 FROM booking
-INNER JOIN seatbooking
-ON booking.id = seatbooking.bookingId
+INNER JOIN seatbooking ON booking.id = seatbooking.bookingId
+INNER JOIN movie ON booking.movieId = movie.id
+INNER JOIN schedule ON booking.scheduleId = schedule.id
 WHERE booking.id = ${id}
-OR booking.userId = ${idUser}`,
+${idUser === 0 ? `OR booking.userId = ${idUser}` : ""}`,
         (err, res) => {
           if (err) {
             reject(new Error(`SQL : ${err.sqlMessage}`));

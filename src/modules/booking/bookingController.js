@@ -36,15 +36,22 @@ module.exports = {
         getData.forEach((element) => {
           result.seat.push(element.seat);
         });
-        return helperWrapper.response(res, 200, "success Get Data", result);
+        return helperWrapper.response(
+          res,
+          200,
+          "success Get Data From ID",
+          result
+        );
       }
       if (idUser !== "0") {
+        console.log("=>>>>>>>>>>>>>>>>>>>>>>>>>>WOWOSSS=> ", idBooking, idUser);
+
         const tampungResult = [];
         const rest = await bookingModel.getBookingByIdUser(idUser);
         if (rest.length < 1) {
           return helperWrapper.response(
             res,
-            400,
+            200,
             `Data Tidak Ditemukan Maybe id User Salah`,
             null
           );
@@ -61,7 +68,7 @@ module.exports = {
         return helperWrapper.response(
           res,
           200,
-          "success Get Data",
+          "success Get Data from User ID",
           tampungResult
         );
       }

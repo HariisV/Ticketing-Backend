@@ -14,7 +14,7 @@ module.exports = {
         return helperWrapper.response(
           res,
           400,
-          `New Password And Confirm Password Tidak Sama`,
+          `Password Dan Konfirmasi Password Harus Sama`,
           null
         );
       }
