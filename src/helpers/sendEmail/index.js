@@ -28,7 +28,7 @@ module.exports = {
     );
 
     const mailOptions = {
-      from: "Tickez.com <no-reply@Tickez.com>",
+      from: "Tickez.com",
       to: email,
       subject: "Confirm Your Email To Tickez.com Account !",
       text: "Confirm Your Email To Tickez.com Account",
@@ -43,7 +43,9 @@ module.exports = {
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
+        console.log(error);
       } else {
+        console.log("gkeror");
       }
     });
   },

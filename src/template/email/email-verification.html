@@ -1,102 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        font-family: arial;
-        font-size: 10pt;
-        background: url("https://p0.pikrepo.com/preview/946/3/untitled.jpg");
-      }
-      img {
-        display: block;
-        width: 300px;
-        margin: auto;
-        margin-bottom: 5%;
-      }
-      h1 {
-        text-align: center;
-        color: #6379f4;
-        font-size: 50px;
-      }
-      h2 {
-        font-family: arial;
-        font-size: 10pt;
-        padding-left: 10px;
-        color: #383838;
-      }
-      li {
-        line-height: 1em;
-        margin-bottom: 12px;
-      }
-      span {
-        color: blue;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: arial;
+      font-size: 10pt;
+      background: url("https://p0.pikrepo.com/preview/946/3/untitled.jpg");
+    }
+
+    img {
+      display: block;
+      width: 300px;
+      margin: auto;
+      margin-bottom: 5%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #6379f4;
+      font-size: 50px;
+    }
+
+    h2 {
+      font-family: arial;
+      font-size: 10pt;
+      padding-left: 10px;
+      color: #383838;
+    }
+
+    li {
+      line-height: 1em;
+      margin-bottom: 12px;
+    }
+
+    span {
+      color: blue;
+    }
+
+    .wrapper {
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    .end {
+      padding-top: 4%;
+    }
+
+    p .box {
+      padding-top: 5%;
+    }
+
+    .box {
+      margin: 30px;
+      background-color: #ffffff;
+      border: 1px solid black;
+      opacity: 0.8;
+      padding: 20px;
+      filter: alpha(opacity=60);
+    }
+
+    .box-bottom {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    @media screen and (min-width: 600px) {
       .wrapper {
-        width: 90%;
+        width: 60%;
         margin: 20px auto;
       }
+
+      p .box {
+        padding-top: 2%;
+      }
+
       .end {
         padding-top: 4%;
       }
-      p .box {
-        padding-top: 5%;
-      }
-      .box {
-        margin: 30px;
-        background-color: #ffffff;
-        border: 1px solid black;
-        opacity: 0.8;
-        padding: 20px;
-        filter: alpha(opacity=60);
-      }
-      .box-bottom {
-        padding-left: 40px;
-        padding-right: 40px;
-      }
-      @media screen and (min-width: 600px) {
-        .wrapper {
-          width: 60%;
-          margin: 20px auto;
-        }
-        p .box {
-          padding-top: 2%;
-        }
-        .end {
-          padding-top: 4%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="box">
-        <h1>Tickez</h1>
-        <div>
-          <h4 class="end" style="text-align: left">Hi,</h4>
-          <p>Thanks for register and welcome to the Tickez app!</p>
-          <p>
-            Your account has been successfully added and you can now login to
-            our App and start exploring. Click
-            <a href="{{url}}/auth/Verif-Email/{{keyId}}">here</a> to verify your
-            Email.
-          </p>
-          <p class="end">
-            <i>This is an automated email. Do not reply this email.</i>
-          </p>
-        </div>
-      </div>
-      <div class="box-bottom">
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="box">
+      <h1>Tickez</h1>
+      <div>
+        <h4 class="end" style="text-align: left">Hi,</h4>
+        <p>Thanks for register and welcome to the Tickez app!</p>
         <p>
-          If you have questions, please do not hesitate to contact us through
-          direct message in the App or email to
-          <a href="tickez@gmail.com">tickez@gmail.com</a>.
+          Your account has been successfully added and you can now login to
+          our App and start exploring. Click
+          <a href="{{url}}/auth/Verif-Email/{{keyId}}">here</a> to verify your
+          Email.
         </p>
-        <p>© Code in 2021</p>
+        <p class="end">
+          <i>This is an automated email. Do not reply this email.</i>
+        </p>
       </div>
     </div>
-  </body>
+    <div class="box-bottom">
+      <p>
+        If you have questions, please do not hesitate to contact us through
+        direct message in the App or email to
+        <a href="tickez@gmail.com">tickez@gmail.com</a>.
+      </p>
+      <p>© Code in 2021</p>
+    </div>
+  </div>
+</body>
+
 </html>
