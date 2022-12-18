@@ -7,12 +7,13 @@ DB_DATABASE=tickez
 DB_USERNAME=root
 DB_PASSWORD=
 
-RDS_HOST = redis-15214.c1.ap-southeast-1-1.ec2.cloud.redislabs.com
-RDS_PORT = 15214
-RDS_PASS = 0nfXj0HEOBk7A8QRVkvnvWwjoEPiqXaB
+RDS_HOST = redis-10315.c246.us-east-1-4.ec2.cloud.redislabs.com
+RDS_PORT = 10315
+RDS_PASS = PUgekDGXllHMRmeFslhyuvFP0SiHS7S7
+
 SMTP_SERVICE = gmail
-SMTP_USER = hariswh9@gmail.com
-SMTP_PASS = den588nyn
+SMTP_USER = harisdevtest@gmail.com
+SMTP_PASS = puggnzpcfsxfqqgy
 
 MT_SERVER_KEY = SB-Mid-server-CGlbTBfXd9zQLSSKXC7dU44D
 MT_CLIENT_KEY = SB-Mid-client-ROBHGBVV0TJqDeU2
